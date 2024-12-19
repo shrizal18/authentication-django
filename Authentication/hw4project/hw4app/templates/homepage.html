@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        h1{
+
+            font-size: 50px;
+        }
+        button{
+            background-color: aqua;
+            border-radius:5px ;
+            padding: 5px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 10px;
+            font-size: 18px;
+        }
+        a{
+            text-decoration: none;
+        }
+        p{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HomePage</h1>
+
+    {% if not user.is_authenticated %}
+    <p>How you doing mate ??</p>
+   <button> <a href="{% url "login" %}">Login</a></button>
+   <button> <a href="{% url "signup" %}">SignUp</a></button>
+    {% else %}
+    <h1>Hello {{user}}</h1>
+    <p>You logged in succesfully</p>
+    <button><a href="{% url "logout" %}">LogOut</a></button>
+    <button><a href="{% url "profile" %}">Profile</a></button>
+    {% endif %}
+</body>
+</html>
